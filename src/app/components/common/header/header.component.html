@@ -32,7 +32,9 @@
                     <input type="text" [(ngModel)]="searchInput" (keyup)="sendSearchText(searchInput)" class="form-control" placeholder="Search Products" aria-label="Username" aria-describedby="basic-addon1"/>
                   </div>
             </div>
-            <div class="col-lg-4"></div>
+            <div class="col-lg-4 d-flex align-items-center">
+              <app-account-header></app-account-header>
+            </div>
         </div>
       
     </div>

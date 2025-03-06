@@ -64,6 +64,16 @@ export class ProductsComponent {
   }
 
   searchProducts=(text:string)=>{
-    return this.products.filter(product =>product.name.includes(text))
+    return this.products.filter(product =>product.name.toLowerCase().includes(text.toLowerCase()))
+  }
+
+  addToCart=(product:any,quantity:number)=>{
+    const cartItem={
+      id:product.id,
+      name:product.name,
+      quantity:quantity
+      
+    }
+
   }
 }
