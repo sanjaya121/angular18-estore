@@ -1,0 +1,28 @@
+<div class="products my-5">
+@if(isloading){
+    <mat-spinner></mat-spinner>
+}
+@else{
+   <div class="products-list container">
+       
+        <div class="row">
+      
+            @for(product of searchProducts(searchText);track product.id){
+                <div class="col-lg-3 my-5">
+                    <div class="card">
+                        <img [src]="product.image"/>
+                        <div class="card-body">
+                            <h5 class="cart-title"> {{product.name}}</h5>
+                            <p class="card-text">{{product.description}}</p>
+                            <button class="btn btn-secondary">Add To Cart</button>
+                        </div>
+                    </div>
+                   
+                </div>
+            }
+        </div>
+        <button class="btn btn-success" (click)="loadMore(12);">Load More</button>
+   </div>
+}
+
+</div>
