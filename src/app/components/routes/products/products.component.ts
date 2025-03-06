@@ -5,6 +5,8 @@ import { Products } from '../../../model/products.model';
 import { ProductService } from '../../../services/products.service';
 import { FormsModule } from '@angular/forms';
 import { SharedService } from '../../../services/shared/shared.service';
+import { CartService } from '../../../services/cart/cart.service';
+import { CartItem } from '../../../model/cart.model';
 @Component({
   selector: 'app-products',
   standalone: true,
@@ -16,7 +18,11 @@ export class ProductsComponent {
   /**
    *
    */
-  constructor(private productService: ProductService,private sharedService:SharedService) {
+  constructor(
+    private productService: ProductService,
+    private sharedService:SharedService,
+    private cartService:CartService
+  ) {
 
 
   }
@@ -68,12 +74,14 @@ export class ProductsComponent {
   }
 
   addToCart=(product:any,quantity:number)=>{
-    const cartItem={
+    const cartItem:CartItem={
       id:product.id,
       name:product.name,
-      quantity:quantity
+      quantity:quantity,
+      price:product.price
       
     }
+    this.cartService.addToCart(cartItem)
 
   }
 }

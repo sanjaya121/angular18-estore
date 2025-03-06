@@ -2,11 +2,12 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { SharedService } from '../../../services/shared/shared.service';
 import { FormsModule } from '@angular/forms';
 import { AccountHeaderComponent } from "./account-header/account-header.component";
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [FormsModule, AccountHeaderComponent],
+  imports: [FormsModule,RouterModule, AccountHeaderComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
