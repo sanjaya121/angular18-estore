@@ -39,10 +39,8 @@ export class CartService {
       totalQuantity += item.quantity;
     }
     this.totalQuantity = totalQuantity;
-    this.quantitySubject.next(totalQuantity);
+
   }
-  shareQuantity=()=>{
-    this.quantitySubject.next(this.totalQuantity);
-  }
+
 
 }
