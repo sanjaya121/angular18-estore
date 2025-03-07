@@ -1,0 +1,19 @@
+<div class="shopping-cart-page container my-5">
+
+    <h1>Shopping Cart </h1>
+    <div class="cart-contents">
+        @for(item of cartItems;track item.id){
+            <div class="row d-flex">
+                <div class="col-lg-4">
+                    <img [src]="item.image" width="300"/>
+                </div>
+                <div class="col-lg-4">
+                    <div class="item-name h4">{{item.name}}</div>
+                </div>
+                <div class="col-lg-4"></div>
+            </div>
+          
+        }
+    </div>
+
+</div>

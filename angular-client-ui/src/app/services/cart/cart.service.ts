@@ -10,13 +10,23 @@ export class CartService {
 
   totalQuantity: number = 0;;
   cart: Cart[] = [];
-   cartSubject = new BehaviorSubject<CartItem[]>(this.cartItems);
-   quantitySubject = new BehaviorSubject<any>(0);
+  cartSubject = new BehaviorSubject<CartItem[]>(this.cartItems);
+  quantitySubject = new BehaviorSubject<any>(0);
 
   constructor() { }
 
-  setCart = () => {
-
+  getCart = () => {
+    try {
+      const cart = localStorage.getItem('cart');
+      if (cart) {
+        return JSON.parse(cart) as Cart;
+      }
+      else
+        throw new Error("Basket not found on local storage")
+    }
+    catch (error) {
+      throw new Error("Failed to retrieve the basket: " + error);
+    }
 
   }
 
@@ -31,6 +41,7 @@ export class CartService {
     this.cartSubject.next(this.cartItems);
     this.calculateTotalQuantity();
     this.quantitySubject.next(this.totalQuantity)
+    this.getCart();
   }
 
   calculateTotalQuantity = () => {
@@ -39,10 +50,8 @@ export class CartService {
       totalQuantity += item.quantity;
     }
     this.totalQuantity = totalQuantity;
-    this.quantitySubject.next(totalQuantity);
+
   }
-  shareQuantity=()=>{
-    this.quantitySubject.next(this.totalQuantity);
-  }
+
 
 }

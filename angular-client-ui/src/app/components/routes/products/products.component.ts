@@ -78,7 +78,8 @@ export class ProductsComponent {
       id:product.id,
       name:product.name,
       quantity:quantity,
-      price:product.price
+      price:product.price,
+      image:product.image
       
     }
     this.cartService.addToCart(cartItem);
