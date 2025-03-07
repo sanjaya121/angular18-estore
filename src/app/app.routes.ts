@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { ProductDetailsComponent } from './components/routes/products/product-details/product-details.component';
 import { ShoppigCartComponent } from './components/routes/shoppig-cart/shoppig-cart.component';
+import { JSPracticeComponent } from './components/routes/jspractice/jspractice.component';
 
 export const routes: Routes = [
     {
@@ -16,6 +17,11 @@ export const routes: Routes = [
         path:"shopping-cart",
         component:ShoppigCartComponent,
         title:"Shpping Cart"
+    },
+    {
+        path:"js-challenge",
+        component:JSPracticeComponent,
+        title:"JS Challenge"
     }
 
 ];

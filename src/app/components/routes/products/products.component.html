@@ -10,7 +10,7 @@
             @for(product of searchProducts(searchText);track product.id){
                 <div class="col-lg-3 my-5">
                     <div class="card">
-                        <img [src]="product.image"/>
+                        <img [src]="product.image" height="200"/>
                         <div class="card-body">
                             <h5 class="cart-title"> {{product.name}}</h5>
                             <p class="card-text">{{product.description}}</p>

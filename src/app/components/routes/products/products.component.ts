@@ -81,7 +81,9 @@ export class ProductsComponent {
       price:product.price
       
     }
-    this.cartService.addToCart(cartItem)
+    this.cartService.addToCart(cartItem);
+  
 
   }
+  
 }

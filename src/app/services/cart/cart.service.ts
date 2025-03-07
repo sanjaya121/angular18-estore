@@ -10,8 +10,8 @@ export class CartService {
 
   totalQuantity: number = 0;;
   cart: Cart[] = [];
-  private cartSubject = new BehaviorSubject<CartItem[]>(this.cartItems);
-  private quantitySubject = new BehaviorSubject(0);
+   cartSubject = new BehaviorSubject<CartItem[]>(this.cartItems);
+   quantitySubject = new BehaviorSubject<any>(0);
 
   constructor() { }
 
@@ -22,7 +22,6 @@ export class CartService {
 
   addToCart = (item: CartItem) => {
     const existingItem = this.cartItems.find((i) => i.id == item.id);
-
     if (existingItem) {
       existingItem.quantity += item.quantity;
     }
@@ -30,15 +29,20 @@ export class CartService {
       this.cartItems.push(item);
     }
     this.cartSubject.next(this.cartItems);
-    this.calculateTotalQuantity(this.cartItems)
-
+    this.calculateTotalQuantity();
+    this.quantitySubject.next(this.totalQuantity)
   }
 
-  calculateTotalQuantity = (cartitems: any) => {
+  calculateTotalQuantity = () => {
     let totalQuantity = 0;
-    for (const item of cartitems) {
+    for (const item of this.cartItems) {
       totalQuantity += item.quantity;
     }
     this.totalQuantity = totalQuantity;
+    this.quantitySubject.next(totalQuantity);
   }
+  shareQuantity=()=>{
+    this.quantitySubject.next(this.totalQuantity);
+  }
+
 }
