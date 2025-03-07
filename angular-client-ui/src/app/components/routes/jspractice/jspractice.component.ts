@@ -16,6 +16,7 @@ export class JSPracticeComponent implements OnInit {
     // console.log("most Frequent",this.mostFrequent(this.arr));
 
     this.arrayMethods();
+    this.smallestMissingPositiveInterger();
   }
 
   //   Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
@@ -43,29 +44,29 @@ export class JSPracticeComponent implements OnInit {
 
   //Find the most frequent element in an array
   arr = [40, 50, 30, 40, 50, 30, 30];
+  findSmallest = [1, 3, 6, 4, 1, 2,9];
 
   arrayMethods=()=>{
     console.log("Slice",this.arr.slice(0,4))
-    console.log("Every",this.arr.every(item => item > 33))
+    console.log("Every",this.arr.every(item => item > 13))
     console.log("find",this.arr.find(item => item > 48))
   }
 
-  mostFrequent =(array:any)=>{
-    let maxCount =0;
-    let  result =[];
-    for(let i=0;i < array.length;i++){
-      let count =0;
-      for(let j=0;j < array.length;j++){
-        // console.log(array[i],array[j])
-        if(array[i]==array[j]){
-          count++
-          console.log("count++",count++)
-        }
-        if(count > maxCount){
-          maxCount=count;
-          console.log("maxCount++",maxCount)
-        }
-      }
+
+smallestMissingPositiveInterger=()=>{
+  const sortedPositive=this.findSmallest.filter(n=>n >0).sort((a,b)=>a-b);
+  console.log("Sorted Number",sortedPositive);
+  let smallestMissing =1;
+  for(let i=0;i<sortedPositive.length;i++){
+    if(sortedPositive[i]===smallestMissing){
+      smallestMissing++
+
+    }
+    else{
+
     }
   }
+console.log("Smallest Missing",smallestMissing)
+}
+
 }
